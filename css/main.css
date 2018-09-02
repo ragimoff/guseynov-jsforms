@@ -1332,6 +1332,7 @@ fieldset {
 	border-radius: 4px;
 	padding: 5px 15px;
 	background-color: #e0e9ee;
+	display: none;
 }
 
 .notify p {

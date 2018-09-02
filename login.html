@@ -30,7 +30,7 @@
 				<div class="login-form__background--registration">
 					<div class="login-form p-10 pt-30 pb-30">
 						<h1 class="text-center login-heading mt-0 pt-0">Вход на сайт</h1>
-						<form>
+						<form id="form-login" action="success.html">
 							<div class="notify notify--error mb-20">Введите email</div>
 							<div class="notify notify--error mb-20">Неверный формат email</div>
 							<div class="notify notify--error mb-20">Введите пароль</div>
@@ -44,7 +44,7 @@
 							<input class="input-form-registration" name="email" type="email" placeholder="Email" />
 							<input class="input-form-registration" name="password" type="password" placeholder="Пароль" />
 							<div class="text-center pt-30">
-								<a class="button button--enter pl-50 pr-50" href="#">Войти</a>
+								<input type="submit" class="button button--enter pl-50 pr-50" value="Войти">
 							</div>
 						</form>
 					</div>
