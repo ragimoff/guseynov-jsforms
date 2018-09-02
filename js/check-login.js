@@ -9,8 +9,7 @@ $(document).ready(function() {
 			pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i,
 			formEmail = false,
 			formPassword = false,
-			testEmail = 'mail@gmail.com',
-			testPassword = 12345;
+			testEmail = 'mail@gmail.com';
 			
 		// Проверка на email
 		if ( email == '' ){
@@ -41,8 +40,8 @@ $(document).ready(function() {
 		});
 
 		// Проверка на правильность ввода email и password. 
-		if (formPassword == true && formEmail == true){
-			if ( email == testEmail && password == testPassword) {
+		if (formEmail == true){
+			if ( email == testEmail) {
 				$('#formLogin').unbind('submit');
 				$('#formLogin').submit();
 			} else {	

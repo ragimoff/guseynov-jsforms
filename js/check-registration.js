@@ -8,8 +8,7 @@ $(document).ready(function() {
 			pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i,
 			formEmail = false,
 			formPassword = false,
-			testEmail = 'mail@gmail.com',
-			testPassword = 12345;
+			testEmail = 'mail@mail.com';
 			
 		// Проверка на email
 		if ( email == '' ){
@@ -26,13 +25,15 @@ $(document).ready(function() {
 		$('#email').on('focus', function(){
 			$('#errorEmail').slideUp();
 			$('#errorFormEmail').slideUp();
+			$('#errorFormPass .notify').slideUp();
+
 		});
 
 		// Проверка на password
 		if ( password == '' ){
 			$('#errorPassword').slideDown();
 		} else {
-			formPassword = true;
+			formPassword = true;	
 		}
 		// При вводе с клавиатуры ошибка исчезает
 		$('#password').on('focus', function(){
@@ -40,8 +41,8 @@ $(document).ready(function() {
 		});
 
 		// Проверка на правильность ввода email и password. 
-		if (formPassword == true && formEmail == true){
-			if ( email == testEmail && password == testPassword) {
+		if (formEmail == true){
+			if ( email == testEmail ) {	
 				$('#errorFormPass .notify').show();
 				$('#errorFormPass').slideDown();
 			} else {	
