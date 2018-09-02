@@ -1,49 +1,55 @@
 $(document).ready(function() {
 
-	(function(){
 
-		var formValidation = {
+	$('#formLogin').on('submit', function(event){
+		event.preventDefault();
 
-			isValid: true,
-
-			init: function(){
-				//Вызов внутренних функций
-				this._setUpListeners();
-			},
-
-			_setUpListeners: function(){
-				$('#form-login').on('submit', formValidation._validateForm);
-			},
-
-			_validateForm: function(event){
-				event.preventDefault();
-				console.log(' privete _validateForm');
-				var formLogin = $(this),
-					input = formLogin.find('input'),
-					valid = true;
-
-				$.each( input, function(index, val){
-					var input = $(val),
-						value = input.val().trim(),
-						formGroup = input.find('#form-login');
-
-						if ( value.length === 0) {
-							formGroup.addClass('notify');
-						}
-						console.log('fdfd');
-
-				
-
-					
-				}); 
+		var email = $('#email').val(),
+			password = $('#password').val(),
+			pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i,
+			formEmail = false,
+			formPassword = false,
+			testEmail = 'mail@gmail.com',
+			testPassword = 12345;
+			
+		// Проверка на email
+		if ( email == '' ){
+			$('#errorEmail').slideDown();
+		} else {
+			if ( pattern.test(email) ) {
+				formEmail = true;		
+			} else {
+				$('#errorFormEmail').slideDown();
 			}
+		}
 
+		// При вводе с клавиатуры ошибка исчезает
+		$('#email').on('focus', function(){
+			$('#errorEmail').slideUp();
+			$('#errorFormEmail').slideUp();
+		});
 
-		};
+		// Проверка на password
+		if ( password == '' ){
+			$('#errorPassword').slideDown();
+		} else {
+			formPassword = true;
+		}
+		// При вводе с клавиатуры ошибка исчезает
+		$('#password').on('focus', function(){
+			$('#errorPassword').slideUp();
+		});
 
-		formValidation.init();
-
-	}());
-
+		// Проверка на правильность ввода email и password. 
+		if (formPassword == true && formEmail == true){
+			if ( email == testEmail && password == testPassword) {
+				$('#formLogin').unbind('submit');
+				$('#formLogin').submit();
+			} else {	
+				$('#errorFormPass .notify').show();
+				$('#errorFormPass').slideDown();
+			}
+		}
+	});
 
 });
