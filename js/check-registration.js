@@ -41,8 +41,8 @@ $(document).ready(function() {
 		});
 
 		// Проверка на правильность ввода email и password. 
-		if (formEmail == true){
-			if ( email == testEmail ) {	
+		if (formEmail == true && formPassword == true){
+			if ( email == testEmail) {	
 				$('#errorFormPass .notify').show();
 				$('#errorFormPass').slideDown();
 			} else {	
